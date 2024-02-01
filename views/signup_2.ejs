@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Enrollment Form</title>
+  <link href="/css/signup_2.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+  <h1>Enrollment Form</h1>
+
+  <% if (Object.keys(errors).length> 0) { %>
+    <p style="color: red;">Please correct the following errors:</p>
+    <ul>
+      <% Object.values(errors).forEach(function(errorMessage) { %>
+        <li>
+          <%= errorMessage %>
+        </li>
+        <% }); %>
+    </ul>
+  <% } %>
+
+  <form action="/signup_2" method="post">
+    <label for="full_name">Full Name:</label>
+    <input type="text" name="full_name" placeholder="Enter Your Name In Arabic" id="full_name" required /><br /><br />
+    <label for="student_id">Student ID:</label>
+    <input type="text" name="student_id" placeholder="ex: 12010456" id="student_id" required /><br /><br />
+    <p>Are you enrolled in CAP? *</p>
+    <label for="enrolled">Yes</label>
+    <input type="radio" id="enrolled" name="enrolled" value="yes" required>
+    <label for="not_enrolled">No</label>
+    <input type="radio" id="not_enrolled" name="enrolled" value="no"><br>
+    <p>What programming languages do you know?</p>
+    <label>if none just leave it empty</label>
+    <div id="languages">
+      <input type="text" name="languages[]" placeholder="Enter a language"><br>
+    </div>
+    <button type="button" onclick="addLanguage()">Add Language</button><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="/js/addLanguage.js"></script>
+</body>
+</html>

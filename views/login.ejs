@@ -1,0 +1,34 @@
+<%- include('./partials/header') %>
+
+  <div class="login">
+    <h1>Cap-Advisor</h1>
+
+    <% if (errors && Object.keys(errors).length> 0) { %>
+      <p style="color: red;">Please correct the following errors:</p>
+      <ul>
+        <% Object.values(errors).forEach(function(errorMessage) { %>
+          <li>
+            <%= errorMessage %>
+          </li>
+          <% }); %>
+      </ul>
+      <% } %>
+
+        <form id="main_form" action="/login" method="POST">
+          <p for="email">Email:</p>
+          <input placeholder="example@najah.edu" type="email" name="email" id="email" required /><br /><br />
+          <p for="password">Password:</p>
+          <input placeholder="Enter your password" type="password" name="password" id="password" required /><br /><br />
+          <input type="submit" value="Log In" />
+          <p>Don't have an account?...<a href="/registeration">Sign up</a></p>
+        </form>
+
+        <div id="gSignInWrapper">
+          <span class="label">Log in with:</span>
+          <div id="customBtn" class="customGPlusSignIn">
+            <span class="buttonText">Google</span>
+          </div>
+        </div>
+  </div>
+
+  <%- include('./partials/footer') %>

@@ -1,0 +1,40 @@
+<%- include('./partials/header') %>
+
+  <h1>Enrollment Form</h1>
+
+  <% if (Object.keys(errors).length> 0) { %>
+    <p style="color: red;">Please correct the following errors:</p>
+    <ul>
+      <% Object.values(errors).forEach(function(errorMessage) { %>
+        <li>
+          <%= errorMessage %>
+        </li>
+        <% }); %>
+    </ul>
+    <% } %>
+
+      <form action="/signup" method="post">
+        <p for="full_name">Full Name:</p>
+        <input type="text" name="full_name" placeholder="Enter Your Name In Arabic" id="full_name" required />
+
+        <p for="student_id">Student ID:</p>
+        <input type="text" name="student_id" placeholder="ex: 12010456" id="student_id" required />
+
+        <p for="github_account">Github Account:</p>
+        <input type="text" name="github_account" placeholder="ex: https://github.com/username" id="github_account"
+          required />
+
+        <p>Are you enrolled in CAP? *</p>
+        <label for="enrolled">Yes</label>
+        <input type="radio" id="enrolled" name="enrolled" value="yes" required>
+        <label for="not_enrolled">No</label>
+        <input type="radio" id="not_enrolled" name="enrolled" value="no">
+
+        <p for="languages">Programming Languages:</p>
+        <label>Enter languages separated by commas</label>
+        <input type="text" name="languages" placeholder="ex: javascript, c++, java, basic" id="languages" />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <%- include('./partials/footer') %>

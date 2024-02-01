@@ -1,0 +1,43 @@
+<%- include('./partials/header') %>
+
+  <div class="login">
+    <h1>registeration Form</h1>
+
+    <% if (Object.keys(errors).length> 0) { %>
+      <p style="color: red">Please correct the following errors:</p>
+      <ul>
+        <% Object.values(errors).forEach(function(errorMessage) { %>
+          <li>
+            <%= errorMessage %>
+          </li>
+          <% }); %>
+      </ul>
+      <% } %>
+
+        <form action="/registeration" method="POST">
+          <p for="email">Email:</p>
+          <input type="email" name="email" id="email" required /><br /><br />
+          <p for="password">Password:</p>
+          <input type="password" name="password" id="password" required /><br /><br />
+          <p for="c_password">Confirm Password:</p>
+          <input type="password" name="c_password" id="c_password" required /><br /><br />
+          <p for="gender">Gender:</p>
+          <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select><br /><br />
+          <p for="birthdate">Birthdate:</p>
+          <input type="date" name="birthdate" id="birthdate" required /><br /><br />
+          <input type="submit" value="Register" />
+          <p>Already have an account? <a href="/login">Log in</a></p>
+        </form>
+
+        <div id="gSignInWrapper">
+          <span class="label">Sign up with:</span>
+          <div id="customBtn" class="customGPlusSignIn">
+            <span class="buttonText">Google</span>
+          </div>
+        </div>
+  </div>
+
+  <%- include('./partials/footer') %>
